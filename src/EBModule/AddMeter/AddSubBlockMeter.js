@@ -1,14 +1,14 @@
 import React from 'react'
-import { Typography,  TextField,Button,MenuItem, Card, CardContent} from '@mui/material'
-
 import { useState, useEffect} from 'react';
-import {  listdata ,addSubBlockMeterName, subBlockMeterReadingReset,getlistdata} from '../services/OPBlockService';
+import { Typography,  TextField, Button, MenuItem, Card, CardContent} from '@mui/material'
+import { listdata, addSubBlockMeterName, subBlockMeterReadingReset, getlistdata} from '../services/OPBlockService';
 
-const AddSubBlockMeter=({date,setDate,dError, setDerror})=>{
-    const [meterNames, setMeterNames]=useState([])
-    const [mainmetername,addmainMeter]=useState('');
-    const [subblockmetername ,addsubMeter]=useState('');
-    const [readingunits ,setReading]=useState('')
+const AddSubBlockMeter=({date,setDate, setDateError})=>{
+    const [meterNames, setMeterNames]=useState([]) //main meter name get in database and  set metername  in this state
+
+    const [mainmetername, setMainMeterName]=useState(''); //main meter name
+    const [subblockmetername, setSubBlockMeter]=useState(''); //sub block meter name
+    const [readingunits, setReadingUnits]=useState('') //reading units
 
     //validationCheckState
     const [mmeterError,setmMetererror]=useState('');
@@ -42,7 +42,7 @@ const AddSubBlockMeter=({date,setDate,dError, setDerror})=>{
         if(mainmetername === '' && subblockmetername=== '' && date === '' && readingunits=== ''){
             setmMetererror('meter name must be select')
             setsMetererror('Submetername cannot be empty');
-            setDerror('date cannot be empty');
+            setDateError('date cannot be empty');
             setRerror('reading setvalue cannot be empty');
             return;
         }
@@ -55,7 +55,7 @@ const AddSubBlockMeter=({date,setDate,dError, setDerror})=>{
             return;
         }
         else if(date === ''){
-            setDerror('date cannot be empty');
+            setDateError('date cannot be empty');
             return;
         }
         else if(readingunits=== ''){
@@ -63,7 +63,7 @@ const AddSubBlockMeter=({date,setDate,dError, setDerror})=>{
             return;
         }
         else if (selectedDate > today) {
-            setDerror('date is invalid. Cannot select a future date.');
+            setDateError('date is invalid. Cannot select a future date.');
             return ;
         }
         else{
@@ -88,12 +88,13 @@ const AddSubBlockMeter=({date,setDate,dError, setDerror})=>{
             } catch (error) {
                 console.error(error);
             }
-        
-            addmainMeter('')
-            addsubMeter('')
+            
+            //all state set to empty
+            setMainMeterName('')
+            setSubBlockMeter('')
             setDate('')
-            setReading('')
-            setDerror('')
+            setReadingUnits('')
+            setDateError('')
         }
         
     }
@@ -111,7 +112,7 @@ const AddSubBlockMeter=({date,setDate,dError, setDerror})=>{
                         label='MeterName'
                         value={mainmetername}
                         onChange={(e)=>{
-                            addmainMeter(e.target.value)
+                            setMainMeterName(e.target.value)
                             setmMetererror('')
                         }}
                         error={!!mmeterError}
@@ -135,7 +136,7 @@ const AddSubBlockMeter=({date,setDate,dError, setDerror})=>{
                             sx={{width : 400}}
                             value={subblockmetername}
                             onChange={(event)=>{
-                                addsubMeter(event.target.value)
+                                setSubBlockMeter(event.target.value)
                                 setsMetererror('');
                             }}
                             error={!!smeterError}
@@ -149,7 +150,8 @@ const AddSubBlockMeter=({date,setDate,dError, setDerror})=>{
                             sx={{width : 400}}
                             label="ReadingSet"
                             value={readingunits}
-                            onChange={(e)=>{setReading(e.target.value)
+                            onChange={(e)=>{
+                                setReadingUnits(e.target.value)
                                 setRerror('')
                             }}
                             error={!!rError}

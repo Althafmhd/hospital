@@ -119,7 +119,6 @@ const AddDeleteMeter=()=>{
                     <AddMainMeter 
                         date={date}
                         setDate={setDate}
-                        dError={dError}
                         setDerror={setDerror}
                     /><br></br><br></br>
 
