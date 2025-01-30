@@ -58,11 +58,11 @@ const AddDeleteMeter=()=>{
         
     }}> 
         
-        <Box
+      {/**  <Box
                 sx={{
                     position: 'fixed',
                     top: '65px',
-                    left: '12%',
+                    left: '14%',
                     transform: 'translateX(-50%)',
                     zIndex: 1000,
                     backgroundColor: 'white',
@@ -75,27 +75,23 @@ const AddDeleteMeter=()=>{
             <Button onClick ={handleShowDeleteCard} variant="contained" color="primary">Delete</Button> &nbsp; &nbsp;
             <Button onClick ={handleShowResetCard} variant="contained" color="primary">Reset</Button> &nbsp; &nbsp;
             <Button onClick ={handleShowTopCard} variant="contained" color="primary">TOP</Button><br /><br />
-        </Box>
+        </Box>*/}
         
-        <Card sx={{ background :"transparent" , display: 'flex',
-    width : 620,  alignItems: 'center',
+        <Card sx={{ background :"transparent", 
+   
 
     borderRadius : "17px"
     }}>
         <CardContent >
         <Toolbar>
-                <Box display="flex" 
-                    alignItems="center" 
-                    justifyContent="center" 
-                    style={{ flexGrow: 1 }}> {/* Set to match Toolbar height */}
+                <Box 
+                   > {/* Set to match Toolbar height */}
                     <Typography  variant='h4' style={{ color: 'lightblue' }}>
                         LAKSHMI HOSPITALS
                     </Typography>
                 </Box>
             </Toolbar>
-            <Card ref={topRef} sx={{background :'transparent',  display: 'flex',
-                width :"550px",height:200,  alignItems: 'Right',
-                justifyContent: 'Right'}}>
+            <Card ref={topRef} sx={{background :'transparent'}}>
                     <CardContent>
 
                         <TextField 
@@ -119,6 +115,7 @@ const AddDeleteMeter=()=>{
                     <AddMainMeter 
                         date={date}
                         setDate={setDate}
+                        dError={dError}
                         setDerror={setDerror}
                     /><br></br><br></br>
 

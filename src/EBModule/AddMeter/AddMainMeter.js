@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import {Typography, TextField, Button, Card, CardContent} from '@mui/material'
 import {Addmetername, resetReading, listdata} from '../services/OPBlockService'
 
-const AddMainMeter=({date,setDate,setDateError})=>{
+const AddMainMeter=({date,setDate,dError,setDerror})=>{
     
     const[mainmetername, setMainMeterName] = useState('')  //main meter name 
     const[readingunits,setReadingUnits] = useState('') //Reading Units
@@ -28,7 +28,7 @@ const AddMainMeter=({date,setDate,setDateError})=>{
             }
 
             if(date === ''){
-                setDateError('date cannot be empty'); 
+                setDerror('date cannot be empty'); 
             }
 
             if(readingunits === ''){
@@ -39,7 +39,7 @@ const AddMainMeter=({date,setDate,setDateError})=>{
         }
        
         else if (selectedDate > today) {
-            setDateError('Date is invalid. Cannot select a future date.');
+            setDerror('Date is invalid. Cannot select a future date.');
             return false;
         }
 
@@ -89,8 +89,8 @@ const AddMainMeter=({date,setDate,setDateError})=>{
         setMainMeterName('')
         setDate('')
         setReadingUnits('')
-        setDateError('')
-        setSuccessMessage('');
+        setDerror('')
+        setSuccessMessage('')
         setDuplicateError('')
 
     }
