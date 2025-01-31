@@ -57,7 +57,7 @@ const DeleteMainMeter=()=>{
 
 
     return(
-       <Card sx={{background :'transparent',  display: 'flex', width :"550px",height:220,  alignItems: 'Right', justifyContent: 'center'}}>
+       <Card sx={{background :'transparent',  display: 'flex', height:220,  alignItems: 'Right', justifyContent: 'center'}}>
             <CardContent>
                 <form id="DMM" onSubmit={handleDeleteMeter}>
                     <InputLabel>Delete Main Meter</InputLabel> <br />

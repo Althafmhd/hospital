@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import {useState} from 'react'
-import { Typography,MenuItem,Button, Card,CardContent, TextField } from '@mui/material'
+import { Typography,MenuItem,Button, Card,CardContent, TextField, Box} from '@mui/material'
 import { listdata , getlistdata , Deletesubmetername ,deleteSubBlockMeter} from '../services/OPBlockService'
 import DeleteSubMeterM from './DeleteSubMeterM'
 const DeleteSubBlockMeter = () => {
@@ -92,7 +92,7 @@ const DeleteSubBlockMeter = () => {
     }
 
     return(
-        <Card sx={{background :'transparent',  display: 'flex',width :"550px",height:340,  alignItems: 'Right',justifyContent: 'center'}}>
+        <Card sx={{background :'transparent',  display: 'flex',height:240,  alignItems: 'Right',justifyContent: 'center'}}>
            <CardContent>
                 <form id="DSM" onSubmit={handleDeletSubBlockMeter}>
                     <Typography>Delete Sub Block Meter</Typography><br></br>
@@ -115,7 +115,7 @@ const DeleteSubBlockMeter = () => {
                             ))
                             
                         }
-                    </TextField><br></br><br></br>
+                    </TextField>&nbsp; &nbsp;
                     <TextField 
                         select 
                         label="SubMeterName" 
@@ -138,8 +138,11 @@ const DeleteSubBlockMeter = () => {
                         }
                     </TextField><br /><br />
                     
+                    <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+                        <Button type="submit" sx={{width:400}} variant="contained" color="primary">Delete</Button>  
+                    </Box>
                     
-                    <Button type="submit" sx={{width:400}} variant="contained" color="primary">Delete</Button>  
+                    
                     <DeleteSubMeterM
                         open={modalOpen} 
                         handleClose={() => setModalOpen(false)} 

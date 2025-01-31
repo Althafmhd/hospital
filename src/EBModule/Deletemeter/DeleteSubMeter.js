@@ -1,4 +1,4 @@
-import { Card, CardContent, TextField, Typography ,Button,MenuItem} from '@mui/material'
+import { Card, CardContent, TextField, Typography ,Button,MenuItem,Box} from '@mui/material'
 import React from 'react'
 import { useState , useEffect  } from 'react'
 import { listdata,getlistdata,getSubMeter,deleteSubMeter } from '../services/OPBlockService'
@@ -107,7 +107,7 @@ const DeleteSubMeter=()=>{
         }
     };
     return(
-        <Card sx={{background :'transparent',  display: 'flex',width :"550px",height:430,  alignItems: 'center',justifyContent: 'center'}}>
+        <Card sx={{background :'transparent',  display: 'flex',height:400,  alignItems: 'center',justifyContent: 'center'}}>
             <CardContent>
                 <Typography>Delete Sub Meter</Typography><br />
                 <form id="DSM" onSubmit={handleDeleteSubMeter}>
@@ -127,7 +127,7 @@ const DeleteSubMeter=()=>{
                       }  
                         
 
-                    </TextField><br /><br />
+                    </TextField>&nbsp; &nbsp;
                     <TextField
                         select
                         label="Sub Block Meter Name"
@@ -159,7 +159,10 @@ const DeleteSubMeter=()=>{
                             ))
                         }
                     </TextField><br /><br />
-                    <Button sx={{width : 400}} type="submit"  variant="contained" color="primary">DELETE</Button>
+                    <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+                        <Button sx={{width : 400}} type="submit"  variant="contained" color="primary">DELETE</Button>
+                    </Box>
+                    
                     <DeleteSubMeterM
                         open={modalOpen} 
                         handleClose={() => setModalOpen(false)} 
