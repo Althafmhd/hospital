@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import {Typography, TextField, Button, Card, CardContent} from '@mui/material'
+import {Typography, TextField, Button, Card, CardContent,Box} from '@mui/material'
 import {Addmetername, resetReading, listdata} from '../services/OPBlockService'
 
 const AddMainMeter=({date,setDate,dError,setDerror})=>{
@@ -95,7 +95,7 @@ const AddMainMeter=({date,setDate,dError,setDerror})=>{
 
     }
     return(
-        <Card sx={{background :'transparent',  display: 'flex', width :"550px",height:310,  alignItems: 'Right', justifyContent: 'center'}}>
+        <Card sx={{background :'transparent',  display: 'flex',height:250, justifyContent: 'center', alignItems: 'Right' }}> {/**/}
             <CardContent>
 
                 <form onSubmit={Addmeter}>
@@ -115,14 +115,14 @@ const AddMainMeter=({date,setDate,dError,setDerror})=>{
                         error={!!mainMeterErrors}
                         helperText={mainMeterErrors}
                         sx={{width : 400}}
-                    /><br /><br />
+                    />&nbsp; &nbsp; &nbsp; &nbsp;
 
                     {/* Dublicate Entry  Error Message  */}
                     {dublicateError && <Typography color="red" sx={{ marginTop: 2 }}>{dublicateError}</Typography>}
                         
                     <TextField 
                         type="number"
-                        sx={{width : 400}}
+                        sx={{width : 400 }}
                         label="Reading Units"
                         value={readingunits}
                         onChange={(e)=>{
@@ -133,7 +133,11 @@ const AddMainMeter=({date,setDate,dError,setDerror})=>{
                         helperText={readingErrors}
                     /><br /><br />
 
-                    <Button type='submit' sx={{width : 400}} variant="contained" color="primary">Add</Button>
+                    <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+                        <Button type="submit" sx={{ width: 400 }} variant="contained" color="primary">
+                            Add
+                        </Button>
+                    </Box>
                         
                 </form>
 

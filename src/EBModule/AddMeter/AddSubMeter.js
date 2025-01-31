@@ -1,4 +1,4 @@
-import { Card,CardContent, Typography , TextField,Button, MenuItem } from '@mui/material'
+import { Card,CardContent, Typography , TextField,Button, MenuItem,Box } from '@mui/material'
 import React from 'react'
 import {useEffect ,useState} from 'react'
 import { listdata , getlistdata,subMeterAdd,subMeterReset,getSubMeter} from '../services/OPBlockService'
@@ -143,10 +143,10 @@ const AddSubMeter=({date,setDate,dError, setDerror})=>{
     }
     return(
         <Card sx={{background :'transparent',  display: 'flex',
-            width :"550px",height:540,  alignItems: 'Right',
+            height:350,  alignItems: 'Right',
             justifyContent: 'center'}}><br /><br /><br /><br />
             <CardContent><br />
-                <Typography>Add Sub Meter</Typography><br />
+                <Typography sx={{ alignContent:'center'}}>Add Sub Meter</Typography><br />
                 <TextField 
                 select
                 sx={{width:400}} 
@@ -161,7 +161,7 @@ const AddSubMeter=({date,setDate,dError, setDerror})=>{
                             <MenuItem key={meters.id} value={meters.mainmetername}>{meters.mainmetername}</MenuItem>
                         ))
                     }
-                </TextField><br /><br />
+                </TextField> &nbsp; &nbsp;
                 <TextField 
                 select
                 label="Sub Block Meter Name"
@@ -192,7 +192,7 @@ const AddSubMeter=({date,setDate,dError, setDerror})=>{
                 helperText={subMeterError}
                 >
                
-                </TextField><br /><br />
+                </TextField>&nbsp; &nbsp;
                 <TextField 
                 value={readingunits}
                 label="Reading Units"
@@ -206,7 +206,10 @@ const AddSubMeter=({date,setDate,dError, setDerror})=>{
                 >
                 
                 </TextField><br /><br />
-                <Button sx={{width:400}} onClick={handsAddmeter} variant="contained" color="primary">ADD</Button>
+                <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+                    <Button sx={{width:400}} onClick={handsAddmeter} variant="contained" color="primary">ADD</Button>
+                </Box>
+               
                 {dublicateError && <Typography color="red" sx={{ marginTop: 2 }}>{dublicateError}</Typography>}
                 {successMessage && <Typography color="green" sx={{ marginTop: 2 }}>{successMessage}</Typography>}
             </CardContent>

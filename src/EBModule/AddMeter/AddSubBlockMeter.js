@@ -1,9 +1,9 @@
 import React from 'react'
 import { useState, useEffect} from 'react';
-import { Typography,  TextField, Button, MenuItem, Card, CardContent} from '@mui/material'
+import { Typography,  TextField, Button, MenuItem, Card, CardContent,Box} from '@mui/material'
 import { listdata, addSubBlockMeterName, subBlockMeterReadingReset, getlistdata} from '../services/OPBlockService';
 
-const AddSubBlockMeter=({date,setDate, setDateError})=>{
+const AddSubBlockMeter=({date,setDate, dError,setDerror})=>{
     const [meterNames, setMeterNames]=useState([]) //main meter name get in database and  set metername  in this state
 
     const [mainmetername, setMainMeterName]=useState(''); //main meter name
@@ -42,7 +42,7 @@ const AddSubBlockMeter=({date,setDate, setDateError})=>{
         if(mainmetername === '' && subblockmetername=== '' && date === '' && readingunits=== ''){
             setmMetererror('meter name must be select')
             setsMetererror('Submetername cannot be empty');
-            setDateError('date cannot be empty');
+            setDerror('date cannot be empty');
             setRerror('reading setvalue cannot be empty');
             return;
         }
@@ -55,7 +55,7 @@ const AddSubBlockMeter=({date,setDate, setDateError})=>{
             return;
         }
         else if(date === ''){
-            setDateError('date cannot be empty');
+            setDerror('date cannot be empty');
             return;
         }
         else if(readingunits=== ''){
@@ -63,7 +63,7 @@ const AddSubBlockMeter=({date,setDate, setDateError})=>{
             return;
         }
         else if (selectedDate > today) {
-            setDateError('date is invalid. Cannot select a future date.');
+            setDerror('date is invalid. Cannot select a future date.');
             return ;
         }
         else{
@@ -94,13 +94,13 @@ const AddSubBlockMeter=({date,setDate, setDateError})=>{
             setSubBlockMeter('')
             setDate('')
             setReadingUnits('')
-            setDateError('')
+            setDerror('')
         }
         
     }
         return(
             <Card sx={{background :'transparent',  display: 'flex',
-                width :"550px",height:430,  alignItems: 'Right',
+                height:380,  alignItems: 'Right',
                 justifyContent: 'center'}}>
                 <CardContent><br></br>
                     <form id="ASM">
@@ -126,7 +126,7 @@ const AddSubBlockMeter=({date,setDate, setDateError})=>{
                                 >{meter.mainmetername}</MenuItem>
                             ) )
                         }  
-                        </TextField><br></br><br></br>
+                        </TextField>&nbsp; &nbsp;
 
                         <TextField 
                             required
@@ -159,8 +159,10 @@ const AddSubBlockMeter=({date,setDate, setDateError})=>{
                         >
 
                         </TextField> <br /><br />
-
-                        <Button onClick={handleAddSubMeter}  sx={{width : 400}} variant="contained" color="primary">  Add </Button>
+                        <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+                            <Button onClick={handleAddSubMeter}  sx={{width : 400}} variant="contained" color="primary">  Add </Button>
+                        </Box>
+                        
                         {dublicateError && <Typography color="red" sx={{ marginTop: 2 }}>{dublicateError}</Typography>} 
                         {successMessage && <Typography color="green" sx={{ marginTop: 2 }}>{successMessage}</Typography>} 
                     </form>

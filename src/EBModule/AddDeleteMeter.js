@@ -21,166 +21,62 @@ const AddDeleteMeter=()=>{
     const deleteRef=useRef(null)
     const resetRef=useRef(null)
     const topRef=useRef(null)
-
-    const handleShowCard = () =>{
-        if(addRef.current){
-            addRef.current.scrollIntoView({behavior :'smooth' ,block:'start'});
-        }
-        
-    };
-    const handleShowDeleteCard=()=>{
-        if(deleteRef.current){
-            deleteRef.current.scrollIntoView({behavior :'smooth' ,block:'start'});
-        }
-    }
-
-    const handleShowResetCard=()=>{
-        if(resetRef.current){
-            resetRef.current.scrollIntoView({behavior :'smooth' ,block:'start'});
-        }
-    }
-    const handleShowTopCard=()=>{
-        if(topRef.current){
-            topRef.current.scrollIntoView({behavior :'smooth' ,block:'start'});
-        }
-    }
+    
     return(
-        <Box
-       
-        sx={{
-       
-        marginTop: '80px',
-        display: 'flex',
-        justifyContent: 'center',
+        <Box style={{ backgroundSize: "cover", padding:2 ,marginTop: '80px'}}>
+        <Typography textAlign="center" variant='h4' style={{ color: 'lightblue' }}>
+            LAKSHMI HOSPITALS
+        </Typography> <br />
+        <Typography textAlign={'center'} variant='h3'> Meter</Typography><br />
+        {/* Date card */}
+        <Card ref={topRef} sx={{background :'transparent'}}>
+            <CardContent>
+                <TextField 
+                    type="Date" 
+                    format="yyyy/MM/dd" 
+                    value={date} 
+                    onChange={(e)=>{setDate(e.target.value)
+                        setDerror('')
+                    }}
+                    error={!!dError}
+                    helperText={dError}
+                /><br></br><br></br>
+            </CardContent>
+        </Card><br></br>
         
-        alignItems: 'center',                      
-       
-        
-    }}> 
-        
-      {/**  <Box
-                sx={{
-                    position: 'fixed',
-                    top: '65px',
-                    left: '14%',
-                    transform: 'translateX(-50%)',
-                    zIndex: 1000,
-                    backgroundColor: 'white',
-                    padding: '10px',
-                    borderRadius: '8px',
-                    boxShadow: 2,
-                }}
-            >
-            <Button onClick ={handleShowCard} variant="contained" color="primary">Add</Button> &nbsp; &nbsp;
-            <Button onClick ={handleShowDeleteCard} variant="contained" color="primary">Delete</Button> &nbsp; &nbsp;
-            <Button onClick ={handleShowResetCard} variant="contained" color="primary">Reset</Button> &nbsp; &nbsp;
-            <Button onClick ={handleShowTopCard} variant="contained" color="primary">TOP</Button><br /><br />
-        </Box>*/}
-        
-        <Card sx={{ background :"transparent", 
-   
+       {/** Add meter card */}
+        <Card  ref={addRef}>
+            <CardContent>
+                <Typography textAlign="center" variant='h3'>Add Meter</Typography><br></br>
 
-    borderRadius : "17px"
-    }}>
-        <CardContent >
-        <Toolbar>
-                <Box 
-                   > {/* Set to match Toolbar height */}
-                    <Typography  variant='h4' style={{ color: 'lightblue' }}>
-                        LAKSHMI HOSPITALS
-                    </Typography>
-                </Box>
-            </Toolbar>
-            <Card ref={topRef} sx={{background :'transparent'}}>
-                    <CardContent>
+                {/* ADD Main Meter file passe value*/}
+                <AddMainMeter 
+                    date={date}
+                    setDate={setDate}
+                    dError={dError}
+                    setDerror={setDerror}
+                /><br></br><br></br>
 
-                        <TextField 
-                            type="Date" 
-                            format="yyyy/MM/dd" 
-                            value={date} 
-                            onChange={(e)=>{setDate(e.target.value)
-                                setDerror('')
-                            }}
-                            error={!!dError}
-                            helperText={dError}
-                        /><br></br><br></br>
+                {/* ADD Subblock Meter file passe value*/}
+                <AddSubBlockMeter 
+                    date={date}
+                    setDate={setDate}
+                    dError={dError}
+                    setDerror={setDerror}
+                /><br /><br />
 
-                       
-                    </CardContent>
-                </Card><br></br>
-                
-              <Card  ref={addRef}>
-                <CardContent>
-                    <Typography textAlign="center" variant='h3'>Add Meter</Typography><br></br>
-                    <AddMainMeter 
-                        date={date}
-                        setDate={setDate}
-                        dError={dError}
-                        setDerror={setDerror}
-                    /><br></br><br></br>
-
-                    <AddSubBlockMeter 
-                        date={date}
-                        setDate={setDate}
-                        dError={dError}
-                        setDerror={setDerror}
-                    /><br /><br />
-
-                    <AddSubMeter 
-                        date={date}
-                        setDate={setDate}
-                        dError={dError}
-                        setDerror={setDerror}
-                    /><br /><br />
-
-                </CardContent>
-              </Card><br></br><br></br>
-
-               <Card ref={deleteRef}>
-                  <CardContent>
-                        <Typography textAlign="center" variant='h3'>DeleteMeter</Typography><br></br>
-
-                        <DeleteMainMeter /><br /> <br />
-
-                        <DeleteSubBlockMeter /><br /><br />
-
-                        <DeleteSubMeter /><br /><br />
-                  </CardContent>
-               </Card> <br></br><br></br>
-
-                <Card ref={resetRef}>
-                    <CardContent>
-                        <Typography textAlign="center" variant='h3'>ReadingReset</Typography><br></br>
-                
-                        <Mainmeterreadingreset 
-                         date={date}
-                         setDate={setDate}
-                         dError={dError}
-                         setDerror={setDerror}
-                        /><br /><br />
-                
-                        <SubBlockMeterreadingreset 
-                        date={date}
-                        setDate={setDate}
-                        dError={dError}
-                        setDerror={setDerror}
-                        /><br /><br />
-
-                        <SubMeterreadingreset 
-                        date={date}
-                        setDate={setDate}
-                        dError={dError}
-                        setDerror={setDerror}
-                        />
-                       
-                    </CardContent>
-                </Card>
-                
+                {/* ADD sub Meter file passe value*/}
+                <AddSubMeter 
+                    date={date}
+                    setDate={setDate}
+                    dError={dError}
+                    setDerror={setDerror}
+                /><br /><br />
 
             </CardContent>
-        </Card>
-    </Box>
-    ) 
-    
+          </Card><br></br><br></br>
+
+        </Box>
+    )
 }
 export default AddDeleteMeter;
