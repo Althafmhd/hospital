@@ -86,7 +86,35 @@ const AddDeleteMeter=()=>{
 
                     <DeleteSubMeter /><br /><br />
                 </CardContent>
-            </Card> <br></br><br></br>
+            </Card> <br></br>
+
+            <Card ref={resetRef}>
+                <CardContent>
+                    <Typography textAlign="center" variant='h3'>ReadingReset</Typography><br></br>
+            
+                    <Mainmeterreadingreset 
+                     date={date}
+                     setDate={setDate}
+                     dError={dError}
+                     setDerror={setDerror}
+                    /><br /><br />
+            
+                    <SubBlockMeterreadingreset 
+                    date={date}
+                    setDate={setDate}
+                    dError={dError}
+                    setDerror={setDerror}
+                    /><br /><br />
+
+                    <SubMeterreadingreset 
+                    date={date}
+                    setDate={setDate}
+                    dError={dError}
+                    setDerror={setDerror}
+                    />
+                   
+                </CardContent>
+            </Card>
         </Box>
     )
 }

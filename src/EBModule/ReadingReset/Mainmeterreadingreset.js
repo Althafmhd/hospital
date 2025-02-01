@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Card, CardContent, TextField,MenuItem,Button} from '@mui/material';
+import { Typography, Card, CardContent, TextField,MenuItem,Button,Box} from '@mui/material';
 import { useEffect , useState} from 'react';
 import { listdata,resetReading } from '../services/OPBlockService';
 const Mainmeterreadingreset=( {date ,setDate,dError, setDerror})=>{
@@ -70,7 +70,7 @@ const Mainmeterreadingreset=( {date ,setDate,dError, setDerror})=>{
         
     }
     return(
-        <Card sx={{display: 'flex' ,justifyContent: 'center',alignItems: 'center' ,height : 330}}   >
+        <Card sx={{display: 'flex' ,justifyContent: 'center',alignItems: 'center' ,height : 280}}   >
                 <CardContent>
                     <Typography>Main Meter Reading Reset</Typography><br></br>
                     <TextField
@@ -93,7 +93,7 @@ const Mainmeterreadingreset=( {date ,setDate,dError, setDerror})=>{
                         ))
                        }   
                         
-                    </TextField><br></br><br></br>
+                    </TextField>&nbsp; &nbsp;
                     <TextField 
                       sx={{width:400}}
                       label="ReadingResetValue" 
@@ -104,7 +104,10 @@ const Mainmeterreadingreset=( {date ,setDate,dError, setDerror})=>{
                       }}
                       error={!!Ereading}
                       helperText={Ereading}></TextField><br /><br />
-                    <Button sx={{width:400}} onClick={readingReset}  variant="contained" color="primary">ReSet</Button>
+                      <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+                        <Button sx={{width:400}} onClick={readingReset}  variant="contained" color="primary">ReSet</Button>
+                      </Box>
+                    
                     {successMessage && <Typography color="green" sx={{ marginTop: 2 }}>{successMessage}</Typography>}
                 </CardContent>
         </Card>

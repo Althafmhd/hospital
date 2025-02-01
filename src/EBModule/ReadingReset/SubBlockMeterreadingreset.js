@@ -1,4 +1,4 @@
-import { Card,CardContent, Typography ,TextField ,Button ,MenuItem} from '@mui/material'
+import { Card,CardContent, Typography ,TextField ,Button ,MenuItem,Box} from '@mui/material'
 import React from 'react'
 import { useState ,useEffect } from 'react'
 import { listdata , getlistdata ,subBlockMeterReadingReset } from '../services/OPBlockService'
@@ -118,7 +118,7 @@ const SubBlockMeterreadingreset=({date,setDate,dError, setDerror})=>{
                             <MenuItem key={meters.id} value={meters.mainmetername}>{meters.mainmetername}</MenuItem>
                         ))
                     }
-                </TextField><br /><br />
+                </TextField>&nbsp; &nbsp;
 
                 <TextField 
                     select 
@@ -151,8 +151,10 @@ const SubBlockMeterreadingreset=({date,setDate,dError, setDerror})=>{
                     helperText={Rmeter}
                 >
                 </TextField><br /><br />
-
-                <Button sx={{width:400}} onClick={handResetValue}  variant="contained" color="primary">RESET</Button>
+                <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+                    <Button sx={{width:400}} onClick={handResetValue}  variant="contained" color="primary">RESET</Button>
+                </Box>
+                
                 {successMessage && <Typography color="green" sx={{ marginTop: 2 }}>{successMessage}</Typography>}
             </CardContent>
         </Card>

@@ -1,4 +1,4 @@
-import { Card,CardContent, Typography ,TextField, MenuItem , Button} from '@mui/material'
+import { Card,CardContent, Typography ,TextField, MenuItem , Button,Box} from '@mui/material'
 import React from 'react'
 import { useState, useEffect} from 'react'
 import { listdata ,getlistdata ,getSubMeter, subMeterReset} from '../services/OPBlockService'
@@ -122,7 +122,7 @@ const SubMeterreadingreset=({date,setDate,dError, setDerror})=>{
         
     }
     return (
-        <Card sx={{height : 500, display: 'flex',justifyContent: 'center',alignItems: 'center'}}>
+        <Card sx={{height : 350, display: 'flex',justifyContent: 'center',alignItems: 'center'}}>
             <CardContent>
                 <Typography>Sub Meter Reset</Typography><br />
                 <form onSubmit={handleSubMeterReadingReset}>
@@ -141,7 +141,7 @@ const SubMeterreadingreset=({date,setDate,dError, setDerror})=>{
                             ))
                         }
 
-                    </TextField>  <br /><br />
+                    </TextField>  &nbsp; &nbsp;
                     <TextField 
                        select 
                        sx={{width : 400}}
@@ -176,7 +176,7 @@ const SubMeterreadingreset=({date,setDate,dError, setDerror})=>{
                             ))
                         }
 
-                    </TextField><br /><br />
+                    </TextField> &nbsp; &nbsp;
                     <TextField
                       sx={{width :400}}
                       name ="Reading Units"
@@ -191,15 +191,18 @@ const SubMeterreadingreset=({date,setDate,dError, setDerror})=>{
                     >
 
                     </TextField><br /><br />
-                    <Button 
-                        sx={{width :400}}
-                        variant="contained" 
-                        color="primary"
-                        type="submit"
+                    <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
+                        <Button 
+                            sx={{width :400}}
+                            variant="contained" 
+                            color="primary"
+                            type="submit"
 
-                    >
-                        RESET
-                    </Button>
+                        >
+                            RESET
+                        </Button>
+                    </Box>
+                    
                 </form>
                 {successMessage && <Typography color="green" sx={{ marginTop: 2 }}>{successMessage}</Typography>}
             </CardContent>
